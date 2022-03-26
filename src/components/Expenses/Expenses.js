@@ -3,7 +3,7 @@ import "./Expenses.css";
 import Card from "../UI/Card";
 import React from 'react';
 
-function Expenses(props) {
+const Expenses = (props) => {
   return (
     <Card className="expenses">
       {props.items.map((e) => (
