@@ -19,6 +19,10 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === defaultYear;
   });
 
+  if (filteredExpenses.length === 0) {
+    return <FallBack />;
+  }
+
   return (
     <div>
       <Card className="expenses">
@@ -26,13 +30,10 @@ const Expenses = (props) => {
           onYearSelected={selectedYearHandler}
           selected={defaultYear}
         />
-        {filteredExpenses.length === 0 && <FallBack />}
-        {filteredExpenses.length > 0 && (
-          <div>
-            <ExpensesChart expenses={filteredExpenses} />
-            <ExpensesList items={filteredExpenses} />
-          </div>
-        )}
+        <div>
+          <ExpensesChart expenses={filteredExpenses} />
+          <ExpensesList items={filteredExpenses} />
+        </div>
       </Card>
     </div>
   );
